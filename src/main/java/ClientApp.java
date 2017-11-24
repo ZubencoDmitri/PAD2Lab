@@ -31,12 +31,23 @@ public class ClientApp {
     }
     public static void filter(List<Employee>employeeList) throws IOException {
         BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Input the rule for salary:");
+        System.out.println("Input the field and rule:");
+        String field = bf.readLine();
         String sign = bf.readLine();
-        int salary= Integer.parseInt(bf.readLine());
+        String value = bf.readLine();
 //        System.out.println(sign.trim());
 //        char c = sign.charAt(0);
-        if (sign.trim().equals(">")){
+        if (sign.trim().equals("=")&&field.trim().equals("firstname")){
+            System.out.println("Discovered employees: " +
+                    employeeList.stream()
+                            .filter(e -> e.getFirstName() == value)
+                            .sorted(Comparator.comparing(Employee::getLastName))
+                            .collect(Collectors.groupingBy(Employee::getDepartment))
+                            .toString()
+            );
+        }
+        else if (sign.trim().equals(">")&&field.trim().equals("salary")){
+            int salary = Integer.parseInt(value);
             System.out.println("Discovered employees: " +
                     employeeList.stream()
                             .filter(e -> e.getSalary() > salary)
@@ -45,7 +56,8 @@ public class ClientApp {
                             .toString()
             );
         }
-        else if (sign.trim().equals("<")){
+        else if (sign.trim().equals("<")&&field.trim().equals("salary")){
+            int salary = Integer.parseInt(value);
             System.out.println("Discovered employees: " +
                     employeeList.stream()
                             .filter(e -> e.getSalary() < salary)
@@ -54,7 +66,8 @@ public class ClientApp {
                             .toString()
             );
         }
-        else if (sign.trim().equals("=")){
+        else if (sign.trim().equals("=")&&field.trim().equals("salary")){
+            int salary = Integer.parseInt(value);
             System.out.println("Discovered employees: " +
                     employeeList.stream()
                             .filter(e -> e.getSalary() == salary)
@@ -63,7 +76,8 @@ public class ClientApp {
                             .toString()
             );
         }
-        else if (sign.trim().equals("<>")){
+        else if (sign.trim().equals("<>")&&field.trim().equals("salary")){
+            int salary = Integer.parseInt(value);
             System.out.println("Discovered employees: " +
                     employeeList.stream()
                             .filter(e -> e.getSalary() != salary)
