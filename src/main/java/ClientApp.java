@@ -12,6 +12,9 @@ public class ClientApp {
     public static void main(String[] args) throws IOException {
 
         System.out.println("----------Client started----------");
+//        Mediator mediator = new Mediator(1488);
+//        mediator.connect();
+
         System.out.println("--------------UDP-----------------");
         DiscoveryClient discoveryClient=new DiscoveryClient();
         discoveryClient.connect();
@@ -41,6 +44,15 @@ public class ClientApp {
             System.out.println("Discovered employees: " +
                     employeeList.stream()
                             .filter(e -> e.getFirstName() == value)
+                            .sorted(Comparator.comparing(Employee::getLastName))
+                            .collect(Collectors.groupingBy(Employee::getDepartment))
+                            .toString()
+            );
+        }
+        else if (sign.trim().equals("<>")&&field.trim().equals("firstname")){
+            System.out.println("Discovered employees: " +
+                    employeeList.stream()
+                            .filter(e -> e.getFirstName() != value)
                             .sorted(Comparator.comparing(Employee::getLastName))
                             .collect(Collectors.groupingBy(Employee::getDepartment))
                             .toString()

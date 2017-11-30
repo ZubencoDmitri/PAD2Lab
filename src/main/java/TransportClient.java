@@ -22,11 +22,12 @@ public class TransportClient {
 
     public TransportClient(int tcpUnicastPort) throws IOException {
         this.tcpUnicastPort=tcpUnicastPort;
-        serverSocketToConnect= new Socket(tcpUnicastAdress, tcpUnicastPort);
+        serverSocketToConnect= new Socket(tcpUnicastAdress, tcpUnicastPort); //new client socket - host + port
         ostream = serverSocketToConnect.getOutputStream();
         pwrite = new PrintWriter(ostream, true);
         istream = serverSocketToConnect.getInputStream();
     }
+
     public void connect() throws IOException {
         pwrite.println(tcpGetAllNodesEmployeeLists+"\n");
         pwrite.flush();

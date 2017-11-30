@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ServerApp {
     public static void main(String[] args) throws IOException {
-        //node1 - maven
+        //node1
         List<Integer> ports1=new ArrayList<>();
         ports1.add(2001);//internal port of node 2
         ports1.add(4001);//internal port of node 3

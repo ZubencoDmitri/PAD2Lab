@@ -39,7 +39,8 @@ public class ServerNode {
         this.connectedPortsList=connectedPortsList;
         this.employeesList=employeesList;
     }
-    /** UDP MULTICAST message = "get nodes".
+
+    /* UDP MULTICAST message = "get nodes".
      *  uses MulticastSocket
      *  returns the number of connected nodes
      */
@@ -74,6 +75,7 @@ public class ServerNode {
         });
         thread.start();
     }
+
     /*  TCP UNICAST message = "get special data"
      *  uses Socket
      *  returns node employeeList
@@ -110,6 +112,7 @@ public class ServerNode {
         });
         thread.start();
     }
+
     /*  TCP UNICAST message = "get all data"
      *  uses Socket
      *  returns all connected nodes' employeeLists
@@ -184,7 +187,7 @@ public class ServerNode {
                             }
                             executorService.shutdown();
                             semaphore.acquire();
-                            System.out.println("Full data from Server Node with External port = "+tcpClientPort+" is next:");
+                            System.out.println("Full data from Server Node with External port = "+tcpClientPort+" is the following:");
                             for (Employee e:theWholeList) {
                                 System.out.println(e.toString());
                             }

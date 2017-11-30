@@ -16,17 +16,17 @@ public class Employee implements Serializable{
 
     @Override
     public String toString() {
-//        return "Employee{" +
-//                "firstName='" + firstName + '\'' +
-//                ", lastName='" + lastName + '\'' +
-//                ", department='" + department + '\'' +
-//                ", salary=" + salary +
-//                '}';
-        return "<salary=" +salary + ">" +
-                "<firstName>" + firstName + "</firstName>" +
-                "<lastName>" + lastName + "</lastName>" +
-                "<department>" + department + "</department></salary>"
-                ;
+        return "Employee{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", department='" + department + '\'' +
+                ", salary=" + salary +
+                '}';
+//        return "<salary=" +salary + ">" +
+//                "<firstName>" + firstName + "</firstName>" +
+//                "<lastName>" + lastName + "</lastName>" +
+//                "<department>" + department + "</department></salary>"
+//                ;
     }
 
     public void setFirstName(String firstName) {
