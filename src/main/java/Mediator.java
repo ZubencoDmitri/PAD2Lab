@@ -95,8 +95,10 @@ public class Mediator {
     }
 
     public static String test(String testString, List<Employee> employeeList){
-        Pattern p = Pattern.compile("salary>.+");
-        Matcher m = p.matcher(testString);
+        Pattern more = Pattern.compile("salary>.+");
+        Pattern equal = Pattern.compile("salary=.+");
+        Matcher m = more.matcher(testString);
+        Matcher eq = equal.matcher(testString);
         String str = null;
         int salary= Integer.parseInt(testString.substring(7));
         if (m.matches()) {
@@ -107,7 +109,15 @@ public class Mediator {
                             .collect(Collectors.groupingBy(Employee::getDepartment))
                             .toString();
         }
+        else if (eq.matches()) {
+           str = "Discovered employees: " +
+                    employeeList.stream()
+                            .filter(e -> e.getSalary() == salary)
+                            .sorted(Comparator.comparing(Employee::getLastName))
+                            .collect(Collectors.groupingBy(Employee::getDepartment))
+                            .toString();
 
+        }
         return str;
     }
 

@@ -26,7 +26,7 @@ public class Client {
                 byte[] data = new byte[32 * 1024];
                 int readBytes = in.read(data);
 
-                System.out.printf("Server's answer> %s",new String(data, 0, readBytes));
+                System.out.printf("Mediators's answer: %s",new String(data, 0, readBytes));
 
             }
 
